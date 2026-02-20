@@ -9,9 +9,9 @@ export default defineConfig({
   reporter: 'html',
   use: {
     baseURL: 'http://localhost:4200',
-    connectOptions: {
-      wsEndpoint: 'ws://localhost:9292/pw'
-    },
+    // connectOptions: {
+    //   wsEndpoint: 'ws://localhost:9292/pw'
+    // },
     trace: 'on-first-retry',
   },
 

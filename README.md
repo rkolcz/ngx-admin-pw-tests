@@ -46,8 +46,8 @@ Osiągnięcie deterministycznego, powtarzalnego renderu UI przed wykonaniem zrzu
 
 ___
 
-### Run Guidelines
-## Dwa tryby pracy
+## Run Guidelines
+### Dwa tryby pracy
 **Lokalnie**
   ```sh
   npm run test:vrt
