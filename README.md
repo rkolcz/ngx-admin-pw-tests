@@ -54,7 +54,24 @@ ___
   ```
 
 **Przeglądarka z Dockera (deterministyczny VRT)**
+http://localhost:9292 → Running (Remote Chromium browser server - przeglądarka jako usługa w kontenerze Linux
+i wystawił ją jako WebSocket API dla Playwright.)
   ```sh
   npm run docker:build
   npm run docker:run 
   ```
+
+Uruchom test:
+  ```sh
+  npm run test:vrt
+  ```
+  lub
+  ```sh
+  npx playwright test
+  ```
+
+___
+
+## Architektura
+
+![alt text](arch.png)
