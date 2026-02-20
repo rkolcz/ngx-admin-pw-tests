@@ -2,7 +2,16 @@
   "name": "ngx-admin-pw-tests",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+  "test": "playwright test",
+  "test:ui": "playwright test --ui",
+  "test:headed": "playwright test --headed",
+  "test:debug": "playwright test --debug",
+  "test:vrt": "playwright test tests/ui",
+
+  "docker:build": "docker build -t pw-browser-server .",
+  "docker:run": "docker run --rm -it -p 9292:9292 --name pw-browser-server pw-browser-server"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
