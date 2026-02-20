@@ -29,6 +29,10 @@ Brakujące lub różnie renderowane fonty (Mac vs Linux) to jedna z najczęstszy
 1. Stabilizacja DOM przed wykonaniem screenshotu - dodanie helpera waitForStableDom, który czeka aż DOM przestanie się zmieniać przez określony czas, zapobiega wykonywaniu screenshotu w trakcie renderowania SPA.
 
 2. Konteneryzacja środowiska (Docker) - zapewnienie spójnej wersji systemu, przeglądarki i identycznego środowiska jak w CI.
+Zastosowanie Remote Browser Pattern (test -> websocket -> wspólny chromium -> screenshot zamiast za kadym razem: test -> start chromium -> screenshot ):
+- Kontener uruchamia jedną współdzieloną przeglądarkę Chromium jako serwer WebSocket
+- Testy NIE uruchamiają własnego browsera. Podłączają się do już działającego
+
 
 3. Kontrola wersji przeglądarki - wykorzystanie przeglądarki dosterczonej przez playwright.
 
