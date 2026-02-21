@@ -1,8 +1,9 @@
-### Testowanie regresji wizualnej z wykorzystaniem Playwright i VRT (Visual Regression Tracker, open-source)
+# Testowanie regresji wizualnej z Playwright i VRT
+
 
 <details>
 
-<summary>Visual Regression Testing – podejście i narzędzia (entry)</summary>
+<summary>Visual Regression Testing – podejście i narzędzia</summary>
 <br>
 
 Visual Regression Testing (VRT) polega na porównywaniu pikseli wygenerowanych zrzutów ekranu (nie logiki aplikacji). Oznacza to, że testy wizualne nie sprawdzają poprawności działania funkcji biznesowych, lecz wykrywają różnice w wyglądzie UI. W konsekwencji nawet bardzo drobne zmiany w renderowaniu (inna czcionka, subpikselowe przesunięcie elementu czy różnice wynikające z systemu operacyjnego) mogą generować fałszywe błędy (false positives).<br>
@@ -10,15 +11,13 @@ Visual Regression Testing (VRT) polega na porównywaniu pikseli wygenerowanych z
 Dobór narzędzi do testowania wizualnej regresji można rozpatrywać w kontekście „poziomów dojrzałości” projektu i organizacji.
 
 - [ ] Dla małych i średnich projektów często wystarczające jest wykorzystanie natywnego **Visual Testing w Playwright**, uruchamianego w kontrolowanym środowisku (np. Docker).
-<br>
 
-- [ ] W przypadku średnich i większych projektów, gdzie istotny staje się proces przeglądu zmian oraz historia wersji UI, lepszym rozwiązaniem są narzędzia takie jak Visual Regression Tracker czy Percy (np. w ramach BrowserStack), oferujące centralne repozytorium obrazów i interfejs do akceptacji zmian.
-<br>
+- [ ] W przypadku średnich i większych projektów, gdzie istotny staje się proces przeglądu zmian oraz historia wersji UI, lepszym rozwiązaniem są narzędzia takie jak **Visual Regression Tracker (VRT, open-source)** czy Percy (np. w ramach BrowserStack), oferujące centralne repozytorium obrazów i interfejs do akceptacji zmian.
 
 - [ ] W projektach klasy enterprise (np. bankowość, globalne e-commerce), gdzie wymagane jest testowanie na wielu przeglądarkach i urządzeniach w skali, często wykorzystuje się rozwiązania chmurowe takie jak BrowserStack czy SauceLabs w połączeniu z modułami Visual Testing. Zapewniają one skalowalność i szerokie pokrycie środowisk, choć wiążą się z wyższymi kosztami.
 
 </details>
-
+<br>
 
 ### Wyzwania w testach wizualnej regresji
 
