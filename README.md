@@ -46,9 +46,9 @@ Zastosowanie Remote Browser Pattern:
 
 3. Kontrola wersji przeglądarki - wykorzystanie przeglądarki dosterczonej przez playwright.
 
-4. Izolacja dynamicznych elementów - mockowanie, ukrywanie, stabilizowanie przed wykonaniem screenshotu.
+4. Izolacja dynamicznych elementów - mockowanie, ukrywanie (```mask: Locator[]```), stabilizowanie przed wykonaniem screenshotu.
 
-5. Ograniczenie wpływu animacji (Deterministyczne środowisko) - W razie potrzeby animacje mogą być wyłączane.
+5. Ograniczenie wpływu animacji (Deterministyczne środowisko) - W razie potrzeby animacje mogą być wyłączane (```animations: "disabled"```)
 
 6. Zastosowanie metody minimalizującej liczbę fałszywie pozytywnych wyników poprzez racjonalne (0.002) użycie opcji .toHaveScreenshot({ maxDiffPixelRatio: 0.02 }).
 
