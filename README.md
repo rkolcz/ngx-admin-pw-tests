@@ -1,10 +1,29 @@
-**VRT Playwright (Visual Regression Testing z wykorzystaniem Playwright).**
+### Testowanie regresji wizualnej z wykorzystaniem Playwright i VRT (Visual Regression Tracker, open-source)
 
-### Wyzwania w VRT
+<details>
+
+<summary>Visual Regression Testing – podejście i narzędzia (entry)</summary>
+<br>
+
+Visual Regression Testing (VRT) polega na porównywaniu pikseli wygenerowanych zrzutów ekranu (nie logiki aplikacji). Oznacza to, że testy wizualne nie sprawdzają poprawności działania funkcji biznesowych, lecz wykrywają różnice w wyglądzie UI. W konsekwencji nawet bardzo drobne zmiany w renderowaniu (inna czcionka, subpikselowe przesunięcie elementu czy różnice wynikające z systemu operacyjnego) mogą generować fałszywe błędy (false positives).<br>
+
+Dobór narzędzi do testowania wizualnej regresji można rozpatrywać w kontekście „poziomów dojrzałości” projektu i organizacji.
+
+- [ ] Dla małych i średnich projektów często wystarczające jest wykorzystanie natywnego **Visual Testing w Playwright**, uruchamianego w kontrolowanym środowisku (np. Docker).
+<br>
+
+- [ ] W przypadku średnich i większych projektów, gdzie istotny staje się proces przeglądu zmian oraz historia wersji UI, lepszym rozwiązaniem są narzędzia takie jak Visual Regression Tracker czy Percy (np. w ramach BrowserStack), oferujące centralne repozytorium obrazów i interfejs do akceptacji zmian.
+<br>
+
+- [ ] W projektach klasy enterprise (np. bankowość, globalne e-commerce), gdzie wymagane jest testowanie na wielu przeglądarkach i urządzeniach w skali, często wykorzystuje się rozwiązania chmurowe takie jak BrowserStack czy SauceLabs w połączeniu z modułami Visual Testing. Zapewniają one skalowalność i szerokie pokrycie środowisk, choć wiążą się z wyższymi kosztami.
+
+</details>
+
+
+### Wyzwania w testach wizualnej regresji
+
 > [!NOTE]
-> Visual Regression Testing porównuje piksele, a nie logikę aplikacji. Dlatego nawet drobne różnice w renderowaniu mogą generować fałszywe błędy.
-
-Na załączonej poniżej animacji widać subtelne różnice w pozycjonowaniu elementów. W rezultacie otrzymaliśmy fałszywie pozytywny wynik (false positive) na jednej z przeglądarek.
+> Visual Regression Testing porównuje piksele. Dlatego nawet drobne różnice w renderowaniu mogą generować fałszywe błędy. Na załączonej poniżej animacji widać subtelne różnice w pozycjonowaniu elementów. W rezultacie otrzymaliśmy fałszywie pozytywny wynik (false positive) na jednej z przeglądarek.
 
 ![alt text](vrt-playwright-failed-report.png)
 ![](vrt-playwright-failed.gif)
@@ -46,7 +65,7 @@ Zastosowanie Remote Browser Pattern:
 
 3. Kontrola wersji przeglądarki - wykorzystanie przeglądarki dosterczonej przez playwright.
 
-4. Izolacja dynamicznych elementów - mockowanie, ukrywanie (```mask: Locator[]```), stabilizowanie przed wykonaniem screenshotu.
+4. Izolacja dynamicznych elementów - mockowanie (API: ```route.fulfill```), ukrywanie (```mask: Locator[]```), stabilizowanie przed wykonaniem screenshotu (```domStability.ts``` helper), snapshot konkretnych elementów (```expect(sidebar).toHaveScreenshot('sidebar.png')```)
 
 5. Ograniczenie wpływu animacji (Deterministyczne środowisko) - W razie potrzeby animacje mogą być wyłączane (```animations: "disabled"```)
 
