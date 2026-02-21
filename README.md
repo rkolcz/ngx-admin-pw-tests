@@ -4,6 +4,15 @@
 > [!NOTE]
 > Visual Regression Testing porównuje piksele, a nie logikę aplikacji. Dlatego nawet drobne różnice w renderowaniu mogą generować fałszywe błędy.
 
+Na załączonej poniżej animacji widać subtelne różnice w pozycjonowaniu elementów. W rezultacie otrzymaliśmy fałszywie pozytywny wynik (false positive) na jednej z przeglądarek.
+
+![alt text](vrt-playwright-failed-report.png)
+![](vrt-playwright-failed.gif)
+![alt text](vrt-playwright-failed-diff.png)
+![alt text](vrt-playwright-failed-sidebyside.png)
+
+
+
 1. Asynchroniczne renderowanie SPA (Angular / React / Vue)
 Komponenty renderują się etapami (change detection, mikro-taski, lazy loading), co powoduje, że screenshot może zostać wykonany zanim UI osiągnie stabilny stan.
 
@@ -40,6 +49,8 @@ Zastosowanie Remote Browser Pattern:
 4. Izolacja dynamicznych elementów - mockowanie, ukrywanie, stabilizowanie przed wykonaniem screenshotu.
 
 5. Ograniczenie wpływu animacji (Deterministyczne środowisko) - W razie potrzeby animacje mogą być wyłączane.
+
+6. Zastosowanie metody minimalizującej liczbę fałszywie pozytywnych wyników poprzez racjonalne (0.002) użycie opcji .toHaveScreenshot({ maxDiffPixelRatio: 0.02 }).
 
 ### Goal
 Osiągnięcie deterministycznego, powtarzalnego renderu UI przed wykonaniem zrzutu ekranu, tak aby testy wizualne wykrywały wyłącznie realne błędy w interfejsie.
